@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greenwood Public Library</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Extended Tailwind config: custom keyframes + animation
+    tailwind.config = {
+      theme: {
+        extend: {
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          },
+          animation: { 'fade-up': 'fadeUp 0.9s ease-out forwards' },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-stone-50 text-stone-900 antialiased">
+
+  <!-- 1. Navbar -->
+  <header class="sticky top-0 z-50 border-b border-stone-200/70 bg-stone-50/80 backdrop-blur-md">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4" aria-label="Main">
+      <a href="#top" class="flex items-center gap-2">
+        <span class="text-xl font-light tracking-tight">Greenwood</span>
+        <span class="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] text-emerald-800">Open Sat</span>
+      </a>
+      <ul class="hidden items-center gap-8 md:flex">
+        <li><a href="#sections" class="relative text-sm text-stone-600 transition-colors hover:text-stone-900 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Sections</a></li>
+        <li><a href="#gallery" class="relative text-sm text-stone-600 transition-colors hover:text-stone-900 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Gallery</a></li>
+        <li><a href="#membership" class="relative text-sm text-stone-600 transition-colors hover:text-stone-900 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Membership</a></li>
+        <li><a href="#events" class="relative text-sm text-stone-600 transition-colors hover:text-stone-900 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-stone-900 after:transition-all after:duration-300 hover:after:w-full">Events</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="rounded-full border border-stone-900 bg-stone-900 px-5 py-2 text-sm text-white transition-colors duration-300 hover:bg-transparent hover:text-stone-900">Visit Us</a>
+        <button type="button" id="menu-btn" aria-label="Menu" aria-expanded="false" class="text-xl md:hidden">☰</button>
+      </div>
+    </nav>
+    <div id="mobile-menu" class="hidden border-t border-stone-200 px-6 py-3 md:hidden">
+      <a href="#sections" class="block py-2 text-stone-700">Sections</a>
+      <a href="#gallery" class="block py-2 text-stone-700">Gallery</a>
+      <a href="#membership" class="block py-2 text-stone-700">Membership</a>
+      <a href="#events" class="block py-2 text-stone-700">Events</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 2. Hero -->
+    <section class="mx-auto max-w-7xl px-6 pb-16 pt-16 md:pt-24">
+      <h1 class="max-w-4xl text-5xl font-light leading-[1.05] tracking-tight opacity-0 animate-fade-up motion-reduce:animate-none motion-reduce:opacity-100 sm:text-6xl md:text-8xl">
+        A quiet place for loud ideas.
+      </h1>
+      <p class="mt-6 max-w-xl text-lg font-light text-stone-600 opacity-0 animate-fade-up [animation-delay:200ms] motion-reduce:animate-none motion-reduce:opacity-100">
+        Greenwood Public Library has lent books, hosted stories and kept the lights on for readers for over forty years.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3 opacity-0 animate-fade-up [animation-delay:400ms] motion-reduce:animate-none motion-reduce:opacity-100">
+        <a href="#sections" class="rounded-full border border-stone-900 bg-stone-900 px-7 py-3 text-sm text-white transition-colors duration-300 hover:bg-white hover:text-stone-900">Explore Collection</a>
+        <a href="#membership" class="rounded-full border border-stone-900 px-7 py-3 text-sm transition-colors duration-300 hover:bg-stone-900 hover:text-white">Join Free</a>
+      </div>
+      <div class="mt-14 overflow-hidden rounded-lg opacity-0 animate-fade-up [animation-delay:600ms] motion-reduce:animate-none motion-reduce:opacity-100">
+        <img src="assets/hero.svg" alt="Greenwood Public Library main reading hall" class="h-[320px] w-full object-cover transition-transform duration-1000 ease-out hover:scale-105 sm:h-[480px]" />
+      </div>
+      <div class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-lg bg-stone-200 sm:grid-cols-4"><div class="bg-white p-6 sm:p-8"><p class="text-3xl font-light sm:text-4xl">12,000+</p><p class="mt-1 text-sm text-stone-500">Books</p></div><div class="bg-white p-6 sm:p-8"><p class="text-3xl font-light sm:text-4xl">40+</p><p class="mt-1 text-sm text-stone-500">Years</p></div><div class="bg-white p-6 sm:p-8"><p class="text-3xl font-light sm:text-4xl">Free</p><p class="mt-1 text-sm text-stone-500">Wi-Fi</p></div><div class="bg-white p-6 sm:p-8"><p class="text-3xl font-light sm:text-4xl">6</p><p class="mt-1 text-sm text-stone-500">Sections</p></div></div>
+    </section>
+
+    <!-- 3. Sections -->
+    <section id="sections" class="mx-auto max-w-7xl scroll-mt-20 px-6 py-20">
+      <h2 data-reveal class="text-4xl font-light tracking-tight md:text-5xl">Six sections, one roof</h2>
+      <div class="mt-10 grid grid-cols-1 border-t border-stone-200 sm:grid-cols-2">
+        <article data-reveal class="group border-b border-stone-200 p-8 transition-colors duration-500 hover:bg-emerald-50 sm:odd:border-r">
+          <h3 class="text-2xl font-light transition-colors duration-300 group-hover:text-emerald-700">Fiction</h3>
+          <p class="mt-3 max-w-sm text-stone-500 transition-colors duration-300 group-hover:text-emerald-900">Novels, classics and new releases across every genre.</p>
+          <span class="mt-6 inline-block text-sm text-stone-400 transition-colors duration-300 group-hover:text-emerald-700">Browse fiction →</span>
+        </article>
+        <article data-reveal class="group border-b border-stone-200 p-8 transition-colors duration-500 hover:bg-amber-50 sm:odd:border-r">
+          <h3 class="text-2xl font-light transition-colors duration-300 group-hover:text-amber-700">Children’s</h3>
+          <p class="mt-3 max-w-sm text-stone-500 transition-colors duration-300 group-hover:text-amber-900">Picture books, early readers and a story corner.</p>
+          <span class="mt-6 inline-block text-sm text-stone-400 transition-colors duration-300 group-hover:text-amber-700">Browse children’s →</span>
+        </article>
+        <article data-reveal class="group border-b border-stone-200 p-8 transition-colors duration-500 hover:bg-sky-50 sm:odd:border-r">
+          <h3 class="text-2xl font-light transition-colors duration-300 group-hover:text-sky-700">Science</h3>
+          <p class="mt-3 max-w-sm text-stone-500 transition-colors duration-300 group-hover:text-sky-900">Nature, technology and the questions behind them.</p>
+          <span class="mt-6 inline-block text-sm text-stone-400 transition-colors duration-300 group-hover:text-sky-700">Browse science →</span>
+        </article>
+        <article data-reveal class="group border-b border-stone-200 p-8 transition-colors duration-500 hover:bg-rose-50 sm:odd:border-r">
+          <h3 class="text-2xl font-light transition-colors duration-300 group-hover:text-rose-700">History</h3>
+          <p class="mt-3 max-w-sm text-stone-500 transition-colors duration-300 group-hover:text-rose-900">Local archives, biographies and world history.</p>
+          <span class="mt-6 inline-block text-sm text-stone-400 transition-colors duration-300 group-hover:text-rose-700">Browse history →</span>
+        </article>
+        <article data-reveal class="group border-b border-stone-200 p-8 transition-colors duration-500 hover:bg-violet-50 sm:odd:border-r">
+          <h3 class="text-2xl font-light transition-colors duration-300 group-hover:text-violet-700">Poetry</h3>
+          <p class="mt-3 max-w-sm text-stone-500 transition-colors duration-300 group-hover:text-violet-900">Collected verse, anthologies and spoken-word recordings.</p>
+          <span class="mt-6 inline-block text-sm text-stone-400 transition-colors duration-300 group-hover:text-violet-700">Browse poetry →</span>
+        </article>
+        <article data-reveal class="group border-b border-stone-200 p-8 transition-colors duration-500 hover:bg-zinc-50 sm:odd:border-r">
+          <h3 class="text-2xl font-light transition-colors duration-300 group-hover:text-zinc-700">Reference</h3>
+          <p class="mt-3 max-w-sm text-stone-500 transition-colors duration-300 group-hover:text-zinc-900">Atlases, encyclopedias and quiet study desks.</p>
+          <span class="mt-6 inline-block text-sm text-stone-400 transition-colors duration-300 group-hover:text-zinc-700">Browse reference →</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. Gallery -->
+    <section id="gallery" class="mx-auto max-w-7xl scroll-mt-20 px-6 py-20">
+      <h2 data-reveal class="text-4xl font-light tracking-tight md:text-5xl">Inside the building</h2>
+      <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <figure data-reveal class="group relative aspect-[4/3] overflow-hidden rounded-lg bg-stone-200">
+          <img src="assets/g-reading.svg" alt="Reading Room" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <figcaption class="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/60 to-transparent p-5 text-white">
+            <span class="text-xl font-light">Reading Room</span>
+            <span class="rounded-full bg-white/90 px-3 py-1 text-xs text-stone-800">Floor 1</span>
+          </figcaption>
+        </figure>
+        <figure data-reveal class="group relative aspect-[4/3] overflow-hidden rounded-lg bg-stone-200">
+          <img src="assets/g-children.svg" alt="Children’s Corner" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <figcaption class="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/60 to-transparent p-5 text-white">
+            <span class="text-xl font-light">Children’s Corner</span>
+            <span class="rounded-full bg-white/90 px-3 py-1 text-xs text-stone-800">Floor 1</span>
+          </figcaption>
+        </figure>
+        <figure data-reveal class="group relative aspect-[4/3] overflow-hidden rounded-lg bg-stone-200">
+          <img src="assets/g-digital.svg" alt="Digital Lab" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <figcaption class="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/60 to-transparent p-5 text-white">
+            <span class="text-xl font-light">Digital Lab</span>
+            <span class="rounded-full bg-white/90 px-3 py-1 text-xs text-stone-800">Floor 2</span>
+          </figcaption>
+        </figure>
+        <figure data-reveal class="group relative aspect-[4/3] overflow-hidden rounded-lg bg-stone-200">
+          <img src="assets/g-archive.svg" alt="Local Archive" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <figcaption class="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/60 to-transparent p-5 text-white">
+            <span class="text-xl font-light">Local Archive</span>
+            <span class="rounded-full bg-white/90 px-3 py-1 text-xs text-stone-800">Floor 3</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 5. Values (bento) -->
+    <section class="mx-auto max-w-7xl px-6 py-20">
+      <div class="grid auto-rows-[160px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <article data-reveal class="flex flex-col justify-between rounded-2xl bg-slate-100 p-8 transition-colors duration-500 hover:bg-slate-200 sm:col-span-2 sm:row-span-2">
+          <p class="text-sm text-slate-500">About</p>
+          <div>
+            <h3 class="text-3xl font-light md:text-4xl">A library that belongs to the neighbourhood.</h3>
+            <p class="mt-4 max-w-md text-slate-600">Since 1984 we have been the town’s shared living room: free to enter, free to borrow, free to stay all afternoon.</p>
+          </div>
+        </article>
+        <article data-reveal class="flex flex-col justify-between rounded-2xl bg-emerald-50 p-6 transition-colors duration-500 hover:bg-emerald-100">
+          <h3 class="text-xl font-light">Community</h3><p class="text-sm text-emerald-900/70">Clubs, volunteers and neighbours.</p>
+        </article>
+        <article data-reveal class="flex flex-col justify-between rounded-2xl bg-amber-50 p-6 transition-colors duration-500 hover:bg-amber-100">
+          <h3 class="text-xl font-light">40+ Years</h3><p class="text-sm text-amber-900/70">Serving readers since 1984.</p>
+        </article>
+        <article data-reveal class="flex flex-col justify-between rounded-2xl bg-rose-50 p-6 transition-colors duration-500 hover:bg-rose-100 sm:col-span-2">
+          <h3 class="text-xl font-light">Events</h3><p class="text-sm text-rose-900/70">Author talks, workshops and story time every week.</p>
+        </article>
+        <article data-reveal class="flex flex-col justify-between rounded-2xl bg-violet-50 p-6 transition-colors duration-500 hover:bg-violet-100">
+          <h3 class="text-xl font-light">Digital</h3><p class="text-sm text-violet-900/70">E-books, audiobooks and a computer lab.</p>
+        </article>
+        <article data-reveal class="flex flex-col justify-between rounded-2xl bg-zinc-100 p-6 transition-colors duration-500 hover:bg-zinc-200 sm:col-span-2 lg:col-span-3">
+          <h3 class="text-xl font-light">Access</h3><p class="text-sm text-zinc-600">Step-free entry, large-print titles, quiet rooms and free Wi-Fi for everyone.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 6. About (text columns) -->
+    <section class="mx-auto max-w-7xl px-6 py-20">
+      <h2 data-reveal class="max-w-3xl text-4xl font-light leading-tight tracking-tight md:text-6xl">Books first, and then everything that grows around them.</h2>
+      <div data-reveal class="mt-10 columns-1 gap-12 text-stone-600 sm:columns-2">
+        <p class="mb-5 break-inside-avoid">Greenwood opened in a single room with two thousand donated books. Today it holds more than twelve thousand across six sections, and the reading room is rarely empty.</p>
+        <p class="mb-5 break-inside-avoid">We believe a library should be easy to enter and hard to leave. That means comfortable chairs, long opening hours on weekends and staff who know where everything is.</p>
+        <p class="mb-5 break-inside-avoid">Alongside the shelves you will find a digital lab, a children’s corner, a local history archive and a calendar full of events for every age.</p>
+        <p class="mb-5 break-inside-avoid">Membership is free for residents. Come in, pick up a card and borrow your first book today.</p>
+      </div>
+    </section>
+
+    <!-- 7. Membership -->
+    <section id="membership" class="mx-auto max-w-7xl scroll-mt-20 px-6 py-20">
+      <h2 data-reveal class="text-4xl font-light tracking-tight md:text-5xl">Membership</h2>
+      <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <article data-reveal class="flex flex-col justify-between rounded-lg bg-stone-900 p-6 text-white">
+          <h3 class="text-2xl font-light">Pick the card that fits.</h3>
+          <p class="mt-4 text-sm text-stone-300">All plans include full access to the collection. Upgrade any time at the front desk.</p>
+        </article>
+        <article data-reveal class="group relative flex flex-col overflow-hidden rounded-lg border border-stone-200 bg-white">
+          
+          <div class="overflow-hidden"><img src="assets/m-basic.svg" alt="Basic membership" class="h-40 w-full object-cover brightness-95 transition-transform duration-700 group-hover:scale-105" /></div>
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="text-xl font-light">Basic</h3>
+            <p class="mt-1 text-2xl">Free</p>
+            <p class="mt-2 text-sm text-stone-500">Everything you need to borrow and read.</p>
+            <ul class="mt-4 flex-1 space-y-2 text-sm text-stone-700"><li class="flex gap-2"><span class="text-emerald-600">✓</span>Borrow up to 5 books</li><li class="flex gap-2"><span class="text-emerald-600">✓</span>Free Wi-Fi and study desks</li><li class="flex gap-2"><span class="text-emerald-600">✓</span>Event invitations</li></ul>
+            <a href="#contact" class="mt-6 block rounded-full border border-stone-900 py-2 text-center text-sm transition-colors duration-300 hover:bg-stone-900 hover:text-white">Choose Basic</a>
+          </div>
+        </article>
+        <article data-reveal class="group relative flex flex-col overflow-hidden rounded-lg border border-stone-200 bg-white">
+          <span class="absolute right-3 top-3 z-10 rounded-full bg-amber-400 px-3 py-1 text-xs font-medium text-stone-900">Popular</span>
+          <div class="overflow-hidden"><img src="assets/m-student.svg" alt="Student membership" class="h-40 w-full object-cover brightness-95 transition-transform duration-700 group-hover:scale-105" /></div>
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="text-xl font-light">Student</h3>
+            <p class="mt-1 text-2xl">$10 / year</p>
+            <p class="mt-2 text-sm text-stone-500">For learners with a valid student ID.</p>
+            <ul class="mt-4 flex-1 space-y-2 text-sm text-stone-700"><li class="flex gap-2"><span class="text-emerald-600">✓</span>Borrow up to 15 books</li><li class="flex gap-2"><span class="text-emerald-600">✓</span>Digital Lab bookings</li><li class="flex gap-2"><span class="text-emerald-600">✓</span>Exam-week extended hours</li></ul>
+            <a href="#contact" class="mt-6 block rounded-full border border-stone-900 py-2 text-center text-sm transition-colors duration-300 hover:bg-stone-900 hover:text-white">Choose Student</a>
+          </div>
+        </article>
+        <article data-reveal class="group relative flex flex-col overflow-hidden rounded-lg border border-stone-200 bg-white">
+          
+          <div class="overflow-hidden"><img src="assets/m-family.svg" alt="Family membership" class="h-40 w-full object-cover brightness-95 transition-transform duration-700 group-hover:scale-105" /></div>
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="text-xl font-light">Family</h3>
+            <p class="mt-1 text-2xl">$25 / year</p>
+            <p class="mt-2 text-sm text-stone-500">One card for up to five people.</p>
+            <ul class="mt-4 flex-1 space-y-2 text-sm text-stone-700"><li class="flex gap-2"><span class="text-emerald-600">✓</span>Borrow up to 30 books</li><li class="flex gap-2"><span class="text-emerald-600">✓</span>Story-time priority booking</li><li class="flex gap-2"><span class="text-emerald-600">✓</span>Shared digital library</li></ul>
+            <a href="#contact" class="mt-6 block rounded-full border border-stone-900 py-2 text-center text-sm transition-colors duration-300 hover:bg-stone-900 hover:text-white">Choose Family</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 8. Testimonial -->
+    <section class="mx-auto max-w-4xl px-6 py-20 text-center">
+      <blockquote data-reveal class="text-2xl font-light leading-snug md:text-4xl">“The reading room is the only place in town where my kids and I can both be quiet and happy.”</blockquote>
+      <div data-reveal class="mt-8 flex items-center justify-center gap-4">
+        <img src="assets/avatar.svg" alt="Meera Joshi" class="h-16 w-16 rounded-full object-cover grayscale transition-all duration-500 hover:grayscale-0" />
+        <div class="text-left"><p class="font-medium">Meera Joshi</p><p class="text-sm text-stone-500">Member since 2016</p></div>
+      </div>
+    </section>
+
+    <!-- 9. Contact -->
+    <section id="contact" class="mx-auto max-w-7xl scroll-mt-20 px-6 py-20">
+      <div data-reveal class="rounded-3xl bg-emerald-50 p-8 md:p-16">
+        <h2 class="max-w-2xl text-4xl font-light leading-tight tracking-tight md:text-6xl">214 Maple Street, Greenwood</h2>
+        <p class="mt-6 text-emerald-900/80">Mon–Fri 9:00–19:00 &nbsp;·&nbsp; Sat 10:00–17:00 &nbsp;·&nbsp; Sun closed</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="https://www.google.com/maps/search/?api=1&query=214+Maple+Street+Greenwood" target="_blank" rel="noopener" class="rounded-full border border-emerald-900 bg-emerald-900 px-7 py-3 text-sm text-white transition-colors duration-300 hover:bg-transparent hover:text-emerald-900">Get Directions</a>
+          <a href="mailto:hello@greenwoodlibrary.org" class="rounded-full border border-emerald-900 px-7 py-3 text-sm text-emerald-900 transition-colors duration-300 hover:bg-emerald-900 hover:text-white">hello@greenwoodlibrary.org</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Events -->
+    <section id="events" class="mx-auto max-w-7xl scroll-mt-20 px-6 py-20">
+      <h2 data-reveal class="text-4xl font-light tracking-tight md:text-5xl">Upcoming events</h2>
+      <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <article data-reveal class="group">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg"><img src="assets/e1.svg" alt="Book Fair Weekend" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
+          <h3 class="mt-4 text-lg font-light transition-colors duration-300 group-hover:text-emerald-700">Book Fair Weekend</h3>
+          <p class="mt-1 text-sm text-stone-500">12 Nov 2026</p>
+        </article>
+        <article data-reveal class="group">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg"><img src="assets/e2.svg" alt="Story Time with Puppets" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
+          <h3 class="mt-4 text-lg font-light transition-colors duration-300 group-hover:text-emerald-700">Story Time with Puppets</h3>
+          <p class="mt-1 text-sm text-stone-500">19 Nov 2026</p>
+        </article>
+        <article data-reveal class="group">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg"><img src="assets/e3.svg" alt="Intro to Coding Workshop" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
+          <h3 class="mt-4 text-lg font-light transition-colors duration-300 group-hover:text-emerald-700">Intro to Coding Workshop</h3>
+          <p class="mt-1 text-sm text-stone-500">26 Nov 2026</p>
+        </article>
+        <article data-reveal class="group">
+          <div class="aspect-[4/3] overflow-hidden rounded-lg"><img src="assets/e4.svg" alt="Author Talk: Local Voices" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" /></div>
+          <h3 class="mt-4 text-lg font-light transition-colors duration-300 group-hover:text-emerald-700">Author Talk: Local Voices</h3>
+          <p class="mt-1 text-sm text-stone-500">03 Dec 2026</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- 11. Footer -->
+  <footer class="border-t border-stone-200">
+    <div class="mx-auto grid max-w-7xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <p class="text-xl font-light">Greenwood</p>
+        <p class="mt-3 max-w-xs text-sm text-stone-500">A public library for readers of every age.</p>
+        <div class="mt-5 flex gap-2"><a href="#" aria-label="Facebook" class="flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 text-xs text-stone-600 transition-colors duration-300 hover:border-stone-900 hover:bg-stone-900 hover:text-white">f</a><a href="#" aria-label="X" class="flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 text-xs text-stone-600 transition-colors duration-300 hover:border-stone-900 hover:bg-stone-900 hover:text-white">x</a><a href="#" aria-label="Instagram" class="flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 text-xs text-stone-600 transition-colors duration-300 hover:border-stone-900 hover:bg-stone-900 hover:text-white">ig</a><a href="#" aria-label="YouTube" class="flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 text-xs text-stone-600 transition-colors duration-300 hover:border-stone-900 hover:bg-stone-900 hover:text-white">yt</a></div>
+      </div>
+      <div>
+        <p class="mb-3 text-sm font-medium">Pages</p>
+        <ul class="space-y-2"><li><a href="#top" class="text-sm text-stone-500 transition-colors duration-300 hover:text-stone-900">Home</a></li><li><a href="#gallery" class="text-sm text-stone-500 transition-colors duration-300 hover:text-stone-900">Gallery</a></li><li><a href="#membership" class="text-sm text-stone-500 transition-colors duration-300 hover:text-stone-900">Membership</a></li><li><a href="#events" class="text-sm text-stone-500 transition-colors duration-300 hover:text-stone-900">Events</a></li></ul>
+      </div>
+      <div>
+        <p class="mb-3 text-sm font-medium">Sections</p>
+        <ul class="space-y-2"><li><a href="#sections" class="text-sm text-stone-500 transition-colors duration-300 hover:text-stone-900">Fiction</a></li><li><a href="#sections" class="text-sm text-stone-500 transition-colors duration-300 hover:text-stone-900">Children’s</a></li><li><a href="#sections" class="text-sm text-stone-500 transition-colors duration-300 hover:text-stone-900">Science</a></li><li><a href="#sections" class="text-sm text-stone-500 transition-colors duration-300 hover:text-stone-900">History</a></li></ul>
+      </div>
+      <div>
+        <p class="mb-3 text-sm font-medium">Details</p>
+        <ul class="space-y-2 text-sm text-stone-500"><li>214 Maple Street</li><li>Mon–Fri 9:00–19:00</li><li>Sat 10:00–17:00</li><li><a href="mailto:hello@greenwoodlibrary.org" class="text-sm text-stone-500 transition-colors duration-300 hover:text-stone-900">hello@greenwoodlibrary.org</a></li></ul>
+      </div>
+    </div>
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 border-t border-stone-200 px-6 py-6 text-sm text-stone-500 sm:flex-row">
+      <p>© 2026 Greenwood Public Library</p>
+      <div class="flex gap-5"><a href="#" class="text-sm text-stone-500 transition-colors duration-300 hover:text-stone-900">Privacy</a><a href="#" class="text-sm text-stone-500 transition-colors duration-300 hover:text-stone-900">Terms</a><a href="#" class="text-sm text-stone-500 transition-colors duration-300 hover:text-stone-900">Accessibility</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const btn = document.getElementById('menu-btn'), menu = document.getElementById('mobile-menu');
+    btn.addEventListener('click', () => {
+      const hidden = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!hidden));
+    });
+    menu.addEventListener('click', (e) => { if (e.target.tagName === 'A') menu.classList.add('hidden'); });
+
+    // Staggered scroll-in animation (uses the custom fade-up animation from the Tailwind config)
+    const items = document.querySelectorAll('[data-reveal]');
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach((el) => el.classList.remove('opacity-0'));
+    } else {
+      items.forEach((el) => el.classList.add('opacity-0'));
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const idx = Array.from(el.parentElement.children).indexOf(el);
+          el.style.animationDelay = (idx * 120) + 'ms';
+          el.classList.add('animate-fade-up');
+          io.unobserve(el);
+        });
+      }, { threshold: 0.15 });
+      items.forEach((el) => io.observe(el));
+    }
+  </script>
+</body>
+</html>
